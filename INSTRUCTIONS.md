@@ -87,6 +87,10 @@ Some parts can be wrong, we can of course fix/refactor it and explain why (there
 This structure is not mandatory to succeed the assignment, you are free to change it if you feel more comfortable.
 But you must keep same features and explain the reason of your decision for any major change.
 
+## Docker
+
+The project will also a `Dockerfile` to be build and deployable.
+
 ## What you have to do
 
 For the API to work and for the tests to pass, you need to:
@@ -98,6 +102,7 @@ For the API to work and for the tests to pass, you need to:
  - modify test setup to enable functional testing in `adapters/http/adapter_test.go`.
  - as it's an API, you should return the correct responses depending of the requests.
  - your implementation should be compliant with the tests already written.
+ - write `Dockerfile` to build an image
 
 ## Note about the testing phase
 
@@ -105,5 +110,7 @@ Tests will be executed like:
 
     go test -p 1 ./domain ./providers/database ./adapters/http
 
-If your solution needs any database instance, try to setup in tests a docker image with [dockertest](https://github.com/ory/dockertest) 
-or please mention in [ANSWERS.md](./ANSWERS.md) instructions to setup the database for testing (like: which db, env vars, etc.).
+If your solution needs any database instance, you can (of your choice):
+ - Add a docker compose file
+ - Start a docker image directly in tests with [dockertest](https://github.com/ory/dockertest)
+ - In other case, please mention in [ANSWERS.md](./ANSWERS.md) instructions to setup the database for testing.

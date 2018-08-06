@@ -62,7 +62,9 @@ Your code will be also reviewed.
 
  - We will clone your sources.
  - We will run `dep ensure`.
+ - If needed, run `docker-compose up -d`.
  - We will run test like mention in [INSTRUCTIONS.md](./INSTRUCTIONS.md) or something else if specified.
+ - We will run docker to build an image `docker build . -t go-assignment`
 
 ### About the results
 
