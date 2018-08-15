@@ -82,14 +82,14 @@ The project is not empty by default. You will find a structure and several files
  - `adapters/http/*` HTTP adapter implementation
  - `main.go` Start up your application
 
-Some parts can be wrong, we can of course fix/refactor it and explain why (there is no expected choices/implementation, depends on your vision and experience).
+Some parts can be wrong, you can of course fix/refactor it and explain why (there is no expected choices/implementation, depends on your vision and experience).
 
 This structure is not mandatory to succeed the assignment, you are free to change it if you feel more comfortable.
-But you must keep same features and explain the reason of your decision for any major change.
+But keep similar features and explain the reason of your decision for any major change.
 
 ## Docker
 
-The project will also a `Dockerfile` to be build and deployable.
+The project will also a `Dockerfile` to build and able to be deployed.
 
 ## What you have to do
 
@@ -106,11 +106,11 @@ For the API to work and for the tests to pass, you need to:
 
 ## Note about the testing phase
 
-Tests will be executed like:
+By default, tests will be executed like:
 
     go test -p 1 ./domain ./providers/database ./adapters/http
 
 If your solution needs any database instance, you can (of your choice):
  - Add a docker compose file
  - Start a docker image directly in tests with [dockertest](https://github.com/ory/dockertest)
- - In other case, please mention in [ANSWERS.md](./ANSWERS.md) instructions to setup the database for testing.
+ - In other case, please mention in [NOTES.md](./NOTES.md) instructions to setup the database for testing.
