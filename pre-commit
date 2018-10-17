@@ -1,0 +1,11 @@
+#! /bin/sh
+
+# To enable this hook, rename this file to "pre-commit" and move it .git/hooks/.
+
+docker-compose down && \
+    sudo chown -R $USER:$USER . && \
+    docker-compose build && \
+    docker-compose run web /usr/local/go/bin/go test -v \
+		   /go/src/github.com/ablce9/go-assignment/adapters/http \
+		   /go/src/github.com/ablce9/go-assignment/domain \
+		   /go/src/github.com/ablce9/go-assignment/providers/database

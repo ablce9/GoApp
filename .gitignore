@@ -13,3 +13,6 @@
 
 /vendor
 /go-assignment
+
+# Temporary directory for database
+tmp

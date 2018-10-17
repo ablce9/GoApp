@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"gitlab.com/zenport.io/go-assignment/domain"
+	"github.com/ablce9/go-assignment/domain"
 )
 
 func (engine *arenaEngine) GetKnight(ID string) (*domain.Knight, error) {

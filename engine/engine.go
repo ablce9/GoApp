@@ -1,6 +1,6 @@
 package engine
 
-import "gitlab.com/zenport.io/go-assignment/domain"
+import "github.com/ablce9/go-assignment/domain"
 
 type Engine interface {
 	GetKnight(ID string) (*domain.Knight, error)
@@ -21,6 +21,10 @@ type DatabaseProvider interface {
 type arenaEngine struct {
 	arena            *domain.Arena
 	knightRepository KnightRepository
+}
+
+func (a *arenaEngine) GetKnightRepository() KnightRepository {
+	return a.knightRepository
 }
 
 func NewEngine(db DatabaseProvider) Engine {
