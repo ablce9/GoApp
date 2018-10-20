@@ -2,6 +2,7 @@ package domain
 
 type Arena struct{}
 
+// Fight has two fighters fight.
 func (arena *Arena) Fight(fighter1 Fighter, fighter2 Fighter) Fighter {
 	f1Power := fighter1.GetPower()
 	p2Power := fighter2.GetPower()

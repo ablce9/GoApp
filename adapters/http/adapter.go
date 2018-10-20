@@ -77,7 +77,6 @@ type provider interface {
 	GetKnightRepository() engine.KnightRepository
 }
 
-// KnightHandler creates a knight and get the list of knights.
 func (h handler) knightHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		buf, err := ioutil.ReadAll(r.Body)

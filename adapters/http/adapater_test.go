@@ -172,7 +172,7 @@ func TestGetKnights(t *testing.T) {
 		t.Fatal("Response error: Expected weapon_power field in knight object")
 	}
 
-	// TODO: cannot figure out how to solve.
+	// TODO and help me: cannot figure out how to solve.
 	// --- FAIL: TestGetKnights (0.00s)
 	// panic: interface conversion: interface {} is float64, not string [recovered]
 	// panic: interface conversion: interface {} is float64, not string

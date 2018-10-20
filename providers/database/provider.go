@@ -1,31 +1,29 @@
 package database
 
 import (
+	"github.com/ablce9/go-assignment/engine"
 	"github.com/go-pg/pg"
 	"github.com/go-pg/pg/orm"
-	"github.com/ablce9/go-assignment/engine"
 )
 
 var (
 	pdb *pg.DB
 )
 
-// Provider ...
 type Provider struct {
 	Db *pg.DB
 }
 
-// GetKnightRepository ...
 func (provider *Provider) GetKnightRepository() engine.KnightRepository {
 	return &knightRepository{}
 }
 
-// Close ...
+// Close closes database connection.
 func (provider *Provider) Close() {
 	provider.Db.Close()
 }
 
-// NewProvider ...
+// NewProvider creates Provider.
 func NewProvider(addr, user, password, database string) *Provider {
 	pdb = pg.Connect(&pg.Options{
 		Addr:     addr,

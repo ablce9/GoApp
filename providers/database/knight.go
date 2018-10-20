@@ -1,9 +1,10 @@
 package database
 
 import (
+	"strconv"
+
 	"github.com/ablce9/go-assignment/domain"
 	"github.com/go-pg/pg/orm"
-	"strconv"
 )
 
 type knightRepository struct{}
