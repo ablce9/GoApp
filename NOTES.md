@@ -20,6 +20,7 @@ $ docker-compose up
 $ # Make sure you created database for test and postgres is running background.
 $ # Run this as following.
 $ # If you are running Docker on Linux, tmp dir is owned by root. So check/change the ownership first.
+$ # There is a fil at project root, pre-push that can be used for testing purposes.
 $ docker-compose run web \
   /usr/local/go/bin/go test -p 1 \
   /go/src/github.com/ablce9/go-assignment/adapters/http \

@@ -10,9 +10,9 @@ import (
 	"io/ioutil"
 
 	"fmt"
-	"github.com/gorilla/mux"
 	"github.com/ablce9/go-assignment/domain"
 	"github.com/ablce9/go-assignment/engine"
+	"github.com/gorilla/mux"
 	"os"
 )
 

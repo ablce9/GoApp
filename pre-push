@@ -2,6 +2,7 @@
 
 # To enable this hook, rename this file to "pre-push" and move it .git/hooks/.
 docker-compose down && \
+    # Mind casual sudo command!
     sudo chown -R $USER:$USER . && \
     docker-compose build && \
     docker-compose run web /usr/local/go/bin/go test -v \

@@ -10,7 +10,6 @@ import (
 	"github.com/ablce9/go-assignment/providers/database"
 )
 
-
 const (
 	dbAddr     = "db:5432"
 	dbUser     = "postgres"
