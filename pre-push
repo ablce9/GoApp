@@ -3,7 +3,7 @@
 # To enable this hook, rename this file to "pre-push" and move it .git/hooks/.
 docker-compose down && \
     # Mind casual sudo command!
-    sudo chown -R $USER:$USER . && \
+    sudo chown -R $USER:$USER tmp && \
     docker-compose build && \
     docker-compose run web /usr/local/go/bin/go test -v \
 		   /go/src/github.com/ablce9/go-assignment/adapters/http \

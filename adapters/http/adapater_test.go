@@ -171,14 +171,9 @@ func TestGetKnights(t *testing.T) {
 	if _, has := knight["weapon_power"]; !has {
 		t.Fatal("Response error: Expected weapon_power field in knight object")
 	}
-
-	// TODO and help me: cannot figure out how to solve.
-	// --- FAIL: TestGetKnights (0.00s)
-	// panic: interface conversion: interface {} is float64, not string [recovered]
-	// panic: interface conversion: interface {} is float64, not string
-	// if response[0]["id"].(string) == response[1]["id"].(string) {
-	//	t.Fatal("Response error: Expected not same id for each knights")
-	// }
+	if response[0]["id"].(float64) == response[1]["id"].(float64) {
+		t.Fatal("Response error: Expected not same id for each knights")
+	}
 }
 
 func TestGetKnightNotFound(t *testing.T) {
