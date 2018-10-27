@@ -62,19 +62,24 @@ func NewAdapter(e engine.Engine) *Adapter {
 		address = ":5000"
 	}
 
-	srv := &http.Server{
+	srv := http.Server{
 		// TODO: Setup timeout for read/write
 		Handler: router,
 		Addr:    address,
 	}
 
 	return &Adapter{
-		Server: srv,
+		Server: &srv,
 	}
 }
 
 type provider interface {
 	GetKnightRepository() engine.KnightRepository
+}
+
+type reasonS struct {
+	Code    int `json:"code"`
+	Message string `json:"message"`
 }
 
 func (h handler) knightHandler(w http.ResponseWriter, r *http.Request) {
@@ -92,15 +97,12 @@ func (h handler) knightHandler(w http.ResponseWriter, r *http.Request) {
 		if err := json.Unmarshal(buf, &knight); err != nil ||
 			knight.Name == "" ||
 			knight.Strength < 0 || knight.WeaponPower < 0 {
-			reason := struct {
-				Code    int    `json:"code"`
-				Message string `json:"message"`
-			}{
+			reason := reasonS{
 				http.StatusBadRequest,
 				"bad data",
 			}
 			w.WriteHeader(http.StatusBadRequest)
-			marshaled, _ := json.Marshal(reason)
+			marshaled, _ := json.Marshal(&reason)
 			w.Write(marshaled)
 			return
 		}
@@ -116,15 +118,12 @@ func (h handler) knightHandler(w http.ResponseWriter, r *http.Request) {
 			repo := p.GetKnightRepository()
 			knights := repo.FindAll()
 			if len(knights) == 0 {
-				reason := struct {
-					Code    int    `json:"code"`
-					Message string `json:"message"`
-				}{
+				reason := reasonS{
 					http.StatusNotFound,
 					"no data found",
 				}
 				w.WriteHeader(http.StatusNotFound)
-				marshaled, _ := json.Marshal(reason)
+				marshaled, _ := json.Marshal(&reason)
 				w.Write(marshaled)
 				return
 			}
@@ -146,15 +145,12 @@ func (h handler) getKnightsHandler(w http.ResponseWriter, r *http.Request) {
 			knight := repo.Find(id)
 			if knight == nil {
 				message := fmt.Sprintf("Knight #%s not found.", id)
-				reason := struct {
-					Code    int    `json:"code"`
-					Message string `json:"message"`
-				}{
+				reason := reasonS{
 					http.StatusNotFound,
 					message,
 				}
 				w.WriteHeader(http.StatusNotFound)
-				marshaled, _ := json.Marshal(reason)
+				marshaled, _ := json.Marshal(&reason)
 				w.Write(marshaled)
 				return
 			}
